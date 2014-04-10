@@ -1,0 +1,84 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/lighter_white" >
+
+    <include
+        layout="@layout/view_loading"
+        android:visibility="gone" />
+
+    <View
+        android:id="@+id/topBorderFromAddANoteCheck"
+        android:layout_width="fill_parent"
+        android:layout_height="5dp" />
+
+    <RelativeLayout
+        android:id="@+id/imageContainerFromAddANoteCheck"
+        android:layout_width="fill_parent"
+        android:layout_height="300dp"
+        android:layout_below="@id/topBorderFromAddANoteCheck"
+        android:visibility="gone" >
+
+        <com.raweng.built.view.BuiltImageView
+            android:id="@+id/noteImageViewFromAddANoteCheck"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@null"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:scaleType="centerInside" >
+        </com.raweng.built.view.BuiltImageView>
+
+        <ProgressBar
+            android:id="@+id/progressBarCheck"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/deleteImageButtonFromAddANoteCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/noteImageViewFromAddANoteCheck"
+            android:layout_margin="5dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_close2x" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/notesTitleEditTextFromAddANoteCheck"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageContainerFromAddANoteCheck"
+        android:background="@null"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:hint="@string/addnotes_title"
+        android:maxLines="3"
+        android:padding="10dp"
+        android:textStyle="bold" >
+    </EditText>
+
+    <ScrollView
+        android:id="@+id/addANoteScrollView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/notesTitleEditTextFromAddANoteCheck"
+        android:stackFromBottom="true"
+        android:transcriptMode="alwaysScroll" >
+
+        <LinearLayout
+            android:id="@+id/linearLayoutContainer"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

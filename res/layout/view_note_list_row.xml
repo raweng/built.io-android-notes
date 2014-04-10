@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+    <RelativeLayout
+        android:id="@+id/mainContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@android:color/white" >
+
+        <View
+            android:id="@+id/topBorderFormNoteRow"
+            android:layout_width="fill_parent"
+            android:layout_height="5dp"
+            android:background="@android:color/white" />
+
+        <RelativeLayout
+            android:id="@+id/imageViewContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_below="@id/topBorderFormNoteRow" >
+
+            <com.raweng.built.view.BuiltImageView
+                android:id="@+id/builtImageView"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:visibility="gone" >
+            </com.raweng.built.view.BuiltImageView>
+            <ProgressBar 
+                android:id="@+id/progress"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+				android:layout_centerInParent="true"
+                android:visibility="gone"/>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/noteTitleTextViewFormNoteRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imageViewContainer"
+            android:layout_marginLeft="10dp"
+            android:textSize="20sp" />
+
+        <RelativeLayout
+            android:id="@+id/mainContainerFormNoteRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/noteTitleTextViewFormNoteRow" >
+
+            <TextView
+                android:id="@+id/noteDescriptionTextViewFormNoteRow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:paddingBottom="5dp"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/mainContainerFormCheckNoteRow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/noteTitleTextViewFormNoteRow"
+            android:layout_margin="10dp"
+            android:background="@android:color/white" >
+
+            <CheckBox
+                android:id="@+id/itemOnecheckBoxFormCheckNoteRow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:focusable="false" />
+
+            <TextView
+                android:id="@+id/itemOneTextViewFormCheckNoteRow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/itemOnecheckBoxFormCheckNoteRow"
+                android:ellipsize="end"
+                android:focusable="false"
+                android:maxLines="2"
+                android:paddingTop="5dp"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="15sp" />
+
+            <CheckBox
+                android:id="@+id/itemTwocheckBoxFormCheckNoteRow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/itemOnecheckBoxFormCheckNoteRow"
+                android:layout_marginLeft="10dp"
+                android:focusable="false"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/itemTwoTextViewFormCheckNoteRow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/itemOnecheckBoxFormCheckNoteRow"
+                android:layout_toRightOf="@id/itemTwocheckBoxFormCheckNoteRow"
+                android:ellipsize="end"
+                android:focusable="false"
+                android:maxLines="2"
+                android:paddingTop="5dp"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="15sp"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

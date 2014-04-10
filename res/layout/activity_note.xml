@@ -1,0 +1,80 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lighter_white" >
+
+    <include
+        layout="@layout/view_loading"
+        android:visibility="gone" />
+
+    <View
+        android:id="@+id/topBorderFromAddANote"
+        android:layout_width="fill_parent"
+        android:layout_height="5dp"
+        android:background="@android:color/white" />
+
+    <RelativeLayout
+        android:id="@+id/imageContainerFromAddANote"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@id/topBorderFromAddANote"
+        android:visibility="gone" >
+
+        <com.raweng.built.view.BuiltImageView
+            android:id="@+id/noteImageViewFromAddANote"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@null"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:paddingTop="15dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_add_check_note" >
+        </com.raweng.built.view.BuiltImageView>
+
+        <ProgressBar
+            android:id="@+id/progressBarNote"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/deleteImageButtonFromAddANote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="5dp"
+            android:background="@android:color/transparent"
+            android:layout_below="@id/noteImageViewFromAddANote"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_close2x" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/notesTitleEditTextFromAddANote"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageContainerFromAddANote"
+        android:layout_marginTop="10dp"
+        android:background="@null"
+        android:hint="@string/addnotes_title"
+        android:maxLines="3"
+        android:padding="10dp"
+        android:textStyle="bold" >
+    </EditText>
+
+    <EditText
+        android:id="@+id/noteEditTextFromAddANote"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/notesTitleEditTextFromAddANote"
+        android:background="@null"
+        android:hint="@string/addnotes_note"
+        android:padding="10dp" >
+    </EditText>
+
+</RelativeLayout>

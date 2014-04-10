@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- /////////// LOGIN ////////////// -->
+    <color name="builtio_login_button_color">#335687</color>
+    <color name="builtio_login_background">#E8E8E8</color>
+
+    <!-- Notes Main Screen -->
+    <color name="lighter_white">#EBEBEB</color>
+    <color name="lighter_gray">#C0C0C0</color>
+
+    <!-- color picker color -->
+
+    <color name="color_0_color_picker">#FFFFFF</color>
+    <color name="color_1_color_picker">#FFBB22</color>
+    <color name="color_2_color_picker">#EEEE22</color>
+    <color name="color_3_color_picker">#BBE535</color>
+    <color name="color_4_color_picker">#77DDBB</color>
+    <color name="color_5_color_picker">#66CCDD</color>
+
+</resources>

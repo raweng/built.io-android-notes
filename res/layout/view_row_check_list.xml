@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+    <CheckBox
+        android:id="@+id/addanotecheck_todocheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true" />
+
+    <EditText
+        android:id="@+id/addanotecheck_todoedittext"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/addanotecheck_todocheckBox"
+        android:hint="@string/addanotecheck_todo_title"
+        android:textColor="#463E3F"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/closeImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/addanotecheck_todoedittext"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="15dp"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_close2x" />
+
+
+</RelativeLayout>

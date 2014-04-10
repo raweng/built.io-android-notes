@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.raweng.built.view.BuiltImageView
+        android:id="@+id/previewImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="15dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="15dp" >
+    </com.raweng.built.view.BuiltImageView>
+
+    <ProgressBar
+        android:id="@+id/progressBarImage"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_centerInParent="true" />
+
+</RelativeLayout>

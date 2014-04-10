@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:yourapp="http://schemas.android.com/apk/res-auto" >
+
+    <item
+        android:id="@+id/action_choose_color"
+        android:icon="@drawable/ic_color_picker"
+        android:orderInCategory="1"
+        android:showAsAction="always"
+        android:title="@string/menu_choose_color_text"/>
+    
+    <item
+        android:id="@+id/action_add_image"
+        android:orderInCategory="1"
+        android:showAsAction="always"
+        android:title="@string/menu_add_image_text"/>
+    <item
+        android:id="@+id/action_done"
+        android:orderInCategory="1"
+        android:showAsAction="always"
+        android:title="@string/menu_done_text"/>
+
+</menu>

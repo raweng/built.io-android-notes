@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/addNoteMenu"
+        android:icon="@drawable/ic_add_note"
+        android:orderInCategory="1"
+        android:showAsAction="always"
+        android:title="@string/menu_add_note_text"/>
+    
+    <item
+        android:id="@+id/addCheckListMenu"
+        android:icon="@drawable/ic_add_check_note"
+        android:orderInCategory="1"
+        android:showAsAction="always"
+        android:title="@string/menu_add_check_list_text"/>
+    
+    <item
+        android:id="@+id/logoutMenu"
+        android:orderInCategory="1"
+        android:showAsAction="always"
+        android:title="@string/logout_menu_text"/>
+
+</menu>
