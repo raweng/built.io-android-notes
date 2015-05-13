@@ -1,8 +1,5 @@
 package com.builtio.demoNotes.activity;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -28,16 +25,19 @@ import com.builtio.demoNotes.AppConstants;
 import com.builtio.demoNotes.AppSettings;
 import com.builtio.demoNotes.R;
 import com.raweng.built.Built;
-import com.raweng.built.Built.LogType;
+import com.raweng.built.BuiltApplication;
 import com.raweng.built.BuiltError;
-import com.raweng.built.BuiltFile;
 import com.raweng.built.BuiltImageDownloadCallback;
 import com.raweng.built.BuiltObject;
 import com.raweng.built.BuiltResultCallBack;
-import com.raweng.built.BuiltUser;
+import com.raweng.built.BuiltUpload;
 import com.raweng.built.userInterface.BuiltListViewResultCallBack;
 import com.raweng.built.userInterface.BuiltUIListViewController;
+import com.raweng.built.utilities.BuiltConstant;
 import com.raweng.built.view.BuiltImageView;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class HomeActivity extends Activity {
 
@@ -55,21 +55,28 @@ public class HomeActivity extends Activity {
 
 
 	private BuiltUIListViewController  noteListView;
+    public  static BuiltApplication builtApplication;
 
-	@Override
+    @Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		// initialised BuiltUIListViewController instance with class uid.
-		noteListView = new BuiltUIListViewController(HomeActivity.this, "notes");
+		noteListView = new BuiltUIListViewController(HomeActivity.this, "bltdfcc61830fb5b32b","notes");
 
-		setContentView(noteListView.getLayout());
+        try {
+            builtApplication = Built.application(this, "bltdfcc61830fb5b32b");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        setContentView(noteListView.getLayout());
 
 		// set up action bar
 		setUpActionBar();
 
 		//to display built.io library logs.
-		Built.showLogs(LogType.all);
+		Built.showLogs(BuiltConstant.LogType.all.all);
 
 		//To set item limits
 		noteListView.setLimit(10);
@@ -240,27 +247,26 @@ public class HomeActivity extends Activity {
 			final ProgressDialog dialog = new ProgressDialog(HomeActivity.this);
 			dialog.setTitle(getResources().getString(R.string.please_wait));
 			dialog.setMessage(getResources().getString(R.string.loading));
-			dialog.show();
-			dialog.setCancelable(false);
+            dialog.setCancelable(false);
+            dialog.show();
 
-			BuiltUser.getSession().logout(new BuiltResultCallBack() {
 
-				@Override
-				public void onSuccess() {
-					AppSettings.setIsLoggedIn(false, HomeActivity.this);
-					finish();
-					startActivity(new Intent(HomeActivity.this, LoginActivity.class));
-				}
+			builtApplication.getCurrentUser().logoutInBackground(new BuiltResultCallBack() {
 
-				@Override
-				public void onError(BuiltError error) {
-					dialog.dismiss();	
-					Toast.makeText(HomeActivity.this, error.getErrorMessage(), Toast.LENGTH_SHORT).show();
-				}
+                @Override
+                public void onCompletion(BuiltConstant.ResponseType responseType, BuiltError builtError) {
 
-				@Override
-				public void onAlways() {}
-			});
+                    if (builtError == null) {
+                        dialog.dismiss();
+                        AppSettings.setIsLoggedIn(false, HomeActivity.this);
+                        finish();
+                        startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+                    } else {
+                        dialog.dismiss();
+                        Toast.makeText(HomeActivity.this, builtError.getErrorMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
 
 			break;
 
@@ -327,34 +333,41 @@ public class HomeActivity extends Activity {
 						itemTwoTextView.setVisibility(View.GONE);
 					}
 				}else{
-					
 					noteDesciptionTextView.setText(builtObject.getString("note_detail"));
 				}
 				
 				if(builtObject.has("note_image")){
 					
 					progressBar.setVisibility(View.VISIBLE);
-					
-					BuiltFile builtFile = BuiltFile.builtFileWithResponse(builtObject.getJSONObject("note_image"));
-					builtImageView.showProgressOnLoading(progressBar);
-					builtImageView.setTargetedWidth(300);
-					builtImageView.setBuiltFile((Activity) context, builtFile, new BuiltImageDownloadCallback() {
-						
-						@Override
-						public void onSuccess(Bitmap bitmap) {
-							builtImageView.setVisibility(View.VISIBLE);
-							System.out.println("Image downloaded successfully...");
-						}
-						
-						@Override
-						public void onError(BuiltError error) {
-							Toast.makeText(context, error.getErrorMessage(), Toast.LENGTH_SHORT).show();
-						}
-						
-						@Override
-						public void onAlways() {}
-					});
-					
+
+                    try {
+                        JSONObject jsonObject = builtObject.getJSONObject("note_image");
+                        BuiltUpload builtFile = builtApplication.upload();
+                        builtFile.configure(jsonObject);
+
+						builtImageView.setApplicationKey(context, "bltdfcc61830fb5b32b");
+
+                        builtImageView.showProgressOnLoading(progressBar);
+                        builtImageView.setTargetedWidth(300);
+                        builtImageView.setBuiltUpload((Activity) context, builtFile, new BuiltImageDownloadCallback() {
+
+							@Override
+							public void onCompletion(BuiltConstant.ResponseType responseType, Bitmap bitmap, BuiltError builtError) {
+
+								if (builtError == null) {
+									builtImageView.setVisibility(View.VISIBLE);
+									System.out.println("Image downloaded successfully...");
+								} else {
+									Toast.makeText(context, builtError.getErrorMessage(), Toast.LENGTH_SHORT).show();
+								}
+							}
+						});
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+
 				}else{
 					builtImageView.setVisibility(View.GONE);
 				}

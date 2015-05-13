@@ -32,15 +32,19 @@ public class LoginActivity extends BuiltUILoginController{
 		progressDialog.setCancelable(false);
 		progressDialog.setCanceledOnTouchOutside(false);
 
-		//set progress dialog.
+		//Set progress dialog.
 		setProgressDialog(progressDialog);
 
-		//Check if user is already logged in.
+        //Set appilication api key
+        setApplicationKey("bltdfcc61830fb5b32b");
+
+        //Check if user is already logged in.
 		if(AppSettings.getIsLoggedIn(context)){
 			Intent mainIntent = new Intent(context, HomeActivity.class);
 			startActivity(mainIntent);        
 			finish();
 		}
+
 
 		getActionBar().setTitle(getResources().getString(R.string.uinotes_notes_text));
 
@@ -62,12 +66,7 @@ public class LoginActivity extends BuiltUILoginController{
 
 		//Set user uid.
 		AppSettings.setUserUid(user.getUserUid(), context);
-		try {
-			//Save the session of logged in user.
-			user.saveSession();
-		} catch (Exception e) {
-			AppUtils.showLog(TAG, e.toString());
-		}
+
 		Intent mainIntent = new Intent(context, HomeActivity.class);
 		startActivity(mainIntent);        
 		finish();
@@ -77,4 +76,5 @@ public class LoginActivity extends BuiltUILoginController{
 		AppUtils.showLog(TAG, error.getErrorMessage());
 		Toast.makeText(context,error.getErrorMessage(),Toast.LENGTH_LONG).show();
 	}
+
 }

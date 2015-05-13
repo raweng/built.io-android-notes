@@ -41,6 +41,9 @@ public class SignUpActivity extends BuiltUISignUpController{
 		//Set visibility false to default closeImageView in BuiltLogin layout.
 		closeImageView.setVisibility(View.GONE);
 
+        //Set app api key here
+        setApplicationKey("bltdfcc61830fb5b32b");
+
 
 	}
 
@@ -66,5 +69,4 @@ public class SignUpActivity extends BuiltUISignUpController{
 	public boolean onOptionsItemSelected(MenuItem item) {
 		return super.onOptionsItemSelected(item);
 	}
-
 }

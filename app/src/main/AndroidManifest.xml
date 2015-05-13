@@ -15,10 +15,9 @@
 
     <uses-sdk
         android:minSdkVersion="14"
-        android:targetSdkVersion="18" />
+        android:targetSdkVersion="21" />
 
     <application
-        android:name="com.builtio.demoNotes.ApplicationClass"
         android:allowBackup="true"
         android:configChanges="keyboardHidden|orientation"
         android:icon="@drawable/ic_launcher"
